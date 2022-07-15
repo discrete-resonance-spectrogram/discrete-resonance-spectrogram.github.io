@@ -1,41 +1,129 @@
-<!doctype html>
-<html class="no-js" lang="">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title></title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Discrete Resonance Spectrogram</title>
+    <style>
+        .viz {
+            display: none;
+            position: absolute;
+            top: 2em;
+            left: 1em;
+        }
 
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
+        .toggle {
+            display: none;
+        }
 
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="apple-touch-icon" href="icon.png">
-  <!-- Place favicon.ico in the root directory -->
+        .toggle-label:hover {
+            cursor: pointer;
+        }
 
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/main.css">
+        .toggle:not(:checked) + .viz {
+            display: none;
+        }
 
-  <meta name="theme-color" content="#fafafa">
+        .toggle:checked + .viz {
+            display: block;
+        }
+
+        main {
+            border: solid;
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
 </head>
-
 <body>
+<main>
+    <section>
+        <label for="toggle-home" class="toggle-label">Home</label>
+        <input type="radio" checked name="select-viz" id="toggle-home" class="toggle">
+        <div class="viz">
+            <h1>Applications of the Discrete Resonance Spectrogram</h1>
+        </div>
+    </section>
 
-  <!-- Add your site or application content here -->
-  <p>Hello world! This is HTML5 Boilerplate.</p>
-  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
-  <script src="js/plugins.js"></script>
-  <script src="js/main.js"></script>
+    <section>
+        <label for="toggle-viz-1" class="toggle-label">Dynamic Resonances</label>
+        <input type="radio" name="select-viz" id="toggle-viz-1" class="toggle">
+        <div class="viz">
+            <h1>Dynamic Resonances</h1>
+            <audio controls src="audio/nine.wav"></audio>
+            <h2>Discrete Resonance Spectrogram</h2>
+            <img src="images/nine_discrete.png"
+                 alt="Discrete Resonance Spectrogram of nine.wav">
+            <h2>Dynamic Resonance Spectogram</h2>
+            <img src="images/nine_dynamic.png"
+                 alt="Dynamic Resonance Spectrogram of nine.wav">
+            <h2>Extended Dynamic Resonance Spectrogram</h2>
+            <img src="images/nine_dynamic-extended.png"
+                 alt="Extended Dynamic Resonance Spectrogram of nine.wav">
+        </div>
+    </section>
 
-  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-  <script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
-  </script>
-  <script src="https://www.google-analytics.com/analytics.js" async></script>
+    <section>
+        <label for="toggle-viz-2" class="toggle-label">Noise Reduction</label>
+        <input type="radio" name="select-viz" id="toggle-viz-2" class="toggle">
+        <div class="viz">
+            <h1>Noise Reduction</h1>
+            <audio controls src="audio/nine_mono_noisy.wav"></audio>
+            <h2>Discrete Resonance Spectrogram</h2>
+            <img src="images/noise-nine_discrete.png"
+                 alt="Discrete Resonance Spectrogram of noisy-nine.wav">
+            <h2>Denoised Discrete Resonance Spectrogram</h2>
+            <img src="images/noise-nine_discrete-denoised.png"
+                 alt="Denoised Discrete Resonance Spectrogram of noisy-nine.wav">
+            <h2>Denoised Reconstruction</h2>
+            <audio controls src="audio/nine-denoised.wav"></audio>
+            <img src="images/noise-nine_signal.png"
+                 alt="Denoised reconstruction of noisy-nine.wav">
+        </div>
+    </section>
+
+    <section>
+        <label for="toggle-viz-3" class="toggle-label">Source Separation</label>
+        <input type="radio" name="select-viz" id="toggle-viz-3" class="toggle">
+        <div class="viz">
+            <h1>Source Separation</h1>
+            <audio controls src="audio/anybody-here_nine_20kHz.wav"></audio>
+            <h2>Dynamic Resonances over Continuous Resonance Spectrogram</h2>
+            <img src="images/separation-nine+anybody-here_dynamic+continouous.png"
+                 alt="Dynamic Resonances over Continuous Resonance Spectrogram of nine.wav and anybody-here.wav">
+            <h2>Fundamental Frequency Estimation over Discrete Resonance Spectrogram</h2>
+            <img src="images/separation-nine+anybody-here_discrete-f0.png"
+                 alt="Fundamental Frequency Estimation over Discrete Resonance Spectrogram">
+            <h2>Separated Source 1 - Discrete Resonance Spectrogram</h2>
+            <audio controls src="audio/separated-nine.wav"></audio>
+            <img src="images/separation-nine_discrete.png"
+                 alt="Discrete Resonance spectrogram of separated source 1">
+            <h2>Separated Source 2 - Discrete Resonance Spectrogrm</h2>
+            <audio controls src="audio/separated-anybody-here.wav"></audio>
+            <img src="images/separation-anybody-here_discrete.png"
+                 alt="Discrete Resonance Spectrogram of separated source 2">
+        </div>
+    </section>
+
+    <section>
+        <label for="toggle-viz-4" class="toggle-label">Miscellaneous</label>
+        <input type="radio" name="select-viz" id="toggle-viz-4" class="toggle">
+        <div class="viz">
+            <h1>Miscellaneous</h1>
+            <audio controls src="audio/nine.wav"></audio>
+            <h2>Fundamental Frequency Estimation</h2>
+            <img src="images/nine_discrete-f0.png"
+                 alt="Fundamental Frequency Estimation of nine.wav">
+            <h2>Directed Resonance Spectrogram</h2>
+            <img src="images/nine_discrete-arrows.png"
+                 alt="Directed Resonance Spectrogram of nine.wav">
+            <h2>Continuous Density Resonance Spectrogram</h2>
+            <img src="images/nine_density-continuous.png"
+                 alt="Continuous Density Resonance Spectrogram of nine.wav">
+            <h2>Discrete Density Resonance Spectrogram</h2>
+            <img src="images/nine_density-discrete.png"
+                 alt="Discrete Density Resonance Spectrogram of nine.wav">
+        </div>
+    </section>
+</main>
 </body>
-
 </html>
